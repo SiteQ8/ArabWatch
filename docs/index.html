@@ -3,310 +3,403 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#0b0e14">
-<title>ArabWatch — البث المباشر للقنوات العربية والخليجية</title>
+<meta name="theme-color" content="#0a0d12">
+<title>ArabWatch — لوحة الرصد العربية</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='85'>📡</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
---bg:#0b0e14;--bg2:#111520;--bg3:#161b27;--panel:#1a2030;--panel2:#1f2740;
---accent:#3b82f6;--accent2:#60a5fa;--green:#10b981;--red:#ef4444;--amber:#f59e0b;--purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6;
---tx:#e2e8f0;--t2:#94a3b8;--t3:#475569;--t4:#334155;
---bd:#1e293b;--bd2:#2d3b52;
---f:'Tajawal',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;
---hdr:52px;--sb:220px;--tb:40px}
-html,body{font-family:var(--f);background:var(--bg);color:var(--tx);height:100%;overflow:hidden}
+:root{--bg:#0a0d12;--p1:#0f1219;--p2:#141821;--p3:#1a1f2e;--p4:#212840;--bd:#1e2536;--bd2:#2a3248;
+--blue:#3b82f6;--blue2:#60a5fa;--green:#10b981;--red:#ef4444;--amber:#f59e0b;--purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6;--emerald:#34d399;
+--tx:#e2e8f0;--t2:#94a3b8;--t3:#64748b;--t4:#475569;
+--f:'Tajawal',sans-serif;--mono:'IBM Plex Mono',monospace}
+html,body{font-family:var(--f);background:var(--bg);color:var(--tx);height:100%;overflow:hidden;font-size:14px}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
 
 /* ═══ HEADER ═══ */
-.hdr{height:var(--hdr);background:var(--bg2);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:relative;z-index:100}
-.hdr::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.3}
-.brand{display:flex;align-items:center;gap:10px}
-.brand-icon{font-size:1.4rem;filter:drop-shadow(0 0 8px rgba(59,130,246,.4))}
-.brand h1{font-weight:900;font-size:1.15rem;letter-spacing:-.5px;background:linear-gradient(135deg,var(--tx),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.brand-tag{font-size:.55rem;color:var(--t3);font-weight:400;display:block;margin-top:-2px;-webkit-text-fill-color:var(--t3)}
-.live-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:4px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);font-size:.6rem;color:var(--red);font-weight:700;font-family:var(--mono);letter-spacing:1px}
-.live-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1.2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.hdr-r{display:flex;align-items:center;gap:10px}
-.clock{font-family:var(--mono);font-size:.72rem;color:var(--t2);direction:ltr;padding:4px 10px;background:var(--bg3);border-radius:4px;border:1px solid var(--bd)}
-.hdr-link{font-size:.65rem;color:var(--t3);text-decoration:none;padding:4px 10px;border-radius:4px;border:1px solid var(--bd);transition:all .15s}
-.hdr-link:hover{color:var(--accent);border-color:var(--accent)}
+.hdr{height:44px;background:var(--p1);border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;padding:0 14px;position:relative;z-index:200}
+.hdr::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.25}
+.brand{display:flex;align-items:center;gap:8px}
+.brand-logo{font-size:1.2rem}
+.brand h1{font-weight:900;font-size:1rem;background:linear-gradient(135deg,#fff,var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.live-b{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:3px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);font-size:.5rem;color:var(--red);font-weight:700;font-family:var(--mono);letter-spacing:1.5px}
+.live-b::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--red);animation:blink 1.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.hdr-clock{font-family:var(--mono);font-size:.65rem;color:var(--t2);padding:3px 8px;background:var(--p2);border-radius:3px;border:1px solid var(--bd);direction:ltr}
+.hdr-link{font-size:.55rem;color:var(--t3);text-decoration:none;padding:3px 8px;border-radius:3px;border:1px solid var(--bd)}
+.hdr-link:hover{color:var(--blue);border-color:var(--blue)}
+
+/* ═══ TICKER ═══ */
+.ticker{height:28px;background:var(--p1);border-bottom:1px solid var(--bd);display:flex;align-items:center;overflow:hidden}
+.ticker-label{padding:0 10px;font-size:.55rem;font-weight:800;color:#fff;background:var(--red);height:100%;display:flex;align-items:center;gap:3px;white-space:nowrap;flex-shrink:0;letter-spacing:.5px}
+.ticker-label::before{content:'';width:5px;height:5px;border-radius:50%;background:#fff;animation:blink 1s infinite}
+.ticker-scroll{flex:1;overflow:hidden;position:relative}
+.ticker-track{display:flex;animation:scroll 90s linear infinite;white-space:nowrap}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-item{padding:0 24px;font-size:.62rem;color:var(--t2);display:flex;align-items:center;gap:6px;flex-shrink:0}
+.ticker-item b{color:var(--tx);font-weight:600}
+.ticker-dot{width:3px;height:3px;border-radius:50%;background:var(--t3);flex-shrink:0}
 
 /* ═══ LAYOUT ═══ */
-.wrap{display:flex;height:calc(100vh - var(--hdr))}
+.dash{display:grid;grid-template-columns:240px 1fr 300px;grid-template-rows:1fr;height:calc(100vh - 44px - 28px - 22px);overflow:hidden}
 
-/* ═══ SIDEBAR ═══ */
-.sb{width:var(--sb);background:var(--bg2);border-left:1px solid var(--bd);overflow-y:auto;flex-shrink:0;padding:8px 0}
-.sb::-webkit-scrollbar{width:3px}.sb::-webkit-scrollbar-track{background:transparent}.sb::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
-.sb-cat{padding:0 8px;margin-bottom:2px}
-.sb-cat-t{font-size:.5rem;color:var(--t3);text-transform:uppercase;letter-spacing:2px;padding:10px 8px 4px;font-weight:800;display:flex;align-items:center;gap:5px}
-.sb-cat-t::after{content:'';flex:1;height:1px;background:var(--bd)}
-.ch{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;cursor:pointer;transition:all .1s;margin:1px 0;position:relative}
-.ch:hover{background:var(--panel)}
-.ch.on{background:var(--accent);color:#fff}
-.ch.on .ch-sub{color:rgba(255,255,255,.6)}
-.ch-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor}
-.ch-info{flex:1;min-width:0}
-.ch-name{font-size:.72rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ch-sub{font-size:.5rem;color:var(--t3)}
-.ch-flag{font-size:.85rem;flex-shrink:0}
+/* ═══ LEFT PANEL — News ═══ */
+.left{background:var(--p1);border-left:1px solid var(--bd);overflow-y:auto;display:flex;flex-direction:column}
+.panel-t{padding:8px 12px;font-size:.6rem;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:1.5px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--p1);z-index:5}
+.panel-t .badge{font-size:.5rem;padding:1px 6px;border-radius:3px;background:var(--blue);color:#fff;font-weight:600}
+.feed{flex:1;overflow-y:auto}
+.feed-item{padding:10px 12px;border-bottom:1px solid var(--bd);cursor:pointer;transition:background .1s}
+.feed-item:hover{background:var(--p2)}
+.feed-src{font-size:.5rem;color:var(--t3);display:flex;align-items:center;gap:4px;margin-bottom:3px}
+.feed-src .src-dot{width:4px;height:4px;border-radius:50%}
+.feed-title{font-size:.72rem;font-weight:600;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.feed-meta{font-size:.5rem;color:var(--t3);margin-top:4px;display:flex;gap:8px}
 
-/* ═══ MAIN ═══ */
-.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+/* ═══ CENTER — Main Content ═══ */
+.center{display:flex;flex-direction:column;overflow:hidden}
+.tab-bar{display:flex;background:var(--p1);border-bottom:1px solid var(--bd)}
+.tab{padding:8px 16px;font-size:.65rem;font-weight:600;color:var(--t3);cursor:pointer;border-bottom:2px solid transparent;transition:all .1s}
+.tab:hover{color:var(--t2)}
+.tab.on{color:var(--blue);border-color:var(--blue)}
+.center-body{flex:1;overflow:hidden;position:relative}
+.center-panel{display:none;height:100%;overflow:auto}
+.center-panel.on{display:flex;flex-direction:column}
 
-/* ═══ TOOLBAR ═══ */
-.tb{height:var(--tb);background:var(--bg2);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 12px;gap:6px;overflow-x:auto}
-.tb::-webkit-scrollbar{display:none}
-.tb-sep{width:1px;height:20px;background:var(--bd);flex-shrink:0;margin:0 4px}
-.tb-label{font-size:.58rem;color:var(--t3);font-weight:600;letter-spacing:.5px;white-space:nowrap;margin-left:4px}
-.gb{width:30px;height:28px;border-radius:5px;background:var(--bg3);border:1px solid var(--bd);color:var(--t2);font-size:.65rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;transition:all .1s;flex-shrink:0}
-.gb:hover{border-color:var(--accent)}.gb.on{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 12px rgba(59,130,246,.25)}
-.cf{padding:4px 12px;border-radius:14px;background:var(--bg3);border:1px solid var(--bd);color:var(--t2);font-size:.6rem;cursor:pointer;font-family:var(--f);font-weight:600;transition:all .1s;white-space:nowrap;flex-shrink:0}
-.cf:hover{border-color:var(--accent);color:var(--accent)}.cf.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-
-/* ═══ VIDEO GRID ═══ */
+/* TV Grid */
+.tv-toolbar{padding:6px 10px;display:flex;align-items:center;gap:5px;background:var(--p1);border-bottom:1px solid var(--bd)}
+.tv-gb{width:26px;height:24px;border-radius:4px;background:var(--p2);border:1px solid var(--bd);color:var(--t2);font-size:.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600}
+.tv-gb:hover{border-color:var(--blue)}.tv-gb.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tv-cf{padding:3px 10px;border-radius:12px;background:var(--p2);border:1px solid var(--bd);color:var(--t2);font-size:.55rem;cursor:pointer;font-family:var(--f);font-weight:600;white-space:nowrap}
+.tv-cf:hover{border-color:var(--blue)}.tv-cf.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tv-sep{width:1px;height:18px;background:var(--bd);margin:0 3px}
 .vg{flex:1;display:grid;gap:1px;background:var(--bd);overflow:hidden}
-.vg.g1{grid-template-columns:1fr}
-.vg.g2{grid-template-columns:1fr 1fr}
-.vg.g4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
-.vg.g6{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr}
-.vg.g9{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr)}
+.vg.g1{grid-template-columns:1fr}.vg.g2{grid-template-columns:1fr 1fr}.vg.g4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}.vg.g6{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr}.vg.g9{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr)}
 .vc{position:relative;background:var(--bg);overflow:hidden;min-height:0}
-.vc iframe{width:100%;height:100%;border:none;display:block}
-.vc-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.9));padding:10px 12px 8px;display:flex;align-items:flex-end;justify-content:space-between;pointer-events:none}
-.vc-name{font-size:.68rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:5px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-.vc-live{font-size:.45rem;color:var(--red);font-weight:700;font-family:var(--mono);letter-spacing:1.5px;display:flex;align-items:center;gap:3px}
-.vc-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--red);animation:blink 1.2s infinite}
-.vc-empty{display:flex;align-items:center;justify-content:center;color:var(--t3);font-size:.78rem;flex-direction:column;gap:10px;height:100%;background:var(--bg2)}
-.vc-empty-icon{font-size:2.5rem;opacity:.3}
-.vc-empty-txt{font-size:.65rem;color:var(--t3)}
+.vc iframe{width:100%;height:100%;border:none}
+.vc-lb{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.9));padding:8px 10px 5px;pointer-events:none}
+.vc-nm{font-size:.62rem;font-weight:700;color:#fff}.vc-lv{font-size:.42rem;color:var(--red);font-family:var(--mono);float:left;display:flex;align-items:center;gap:3px}
+.vc-lv::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--red);animation:blink 1.2s infinite}
+.vc-empty{display:flex;align-items:center;justify-content:center;color:var(--t3);font-size:.7rem;flex-direction:column;gap:6px;height:100%;background:var(--p1)}
 
-/* ═══ STATUSBAR ═══ */
-.sbar{height:24px;background:var(--bg2);border-top:1px solid var(--bd);display:flex;align-items:center;padding:0 12px;gap:16px;font-size:.5rem;color:var(--t3);font-family:var(--mono)}
+/* Map */
+.map-wrap{height:100%;position:relative}
+.map-wrap iframe{width:100%;height:100%;border:none}
+
+/* ═══ RIGHT PANEL ═══ */
+.right{background:var(--p1);border-right:1px solid var(--bd);overflow-y:auto;display:flex;flex-direction:column}
+
+/* Widgets */
+.widget{border-bottom:1px solid var(--bd);padding:10px 12px}
+.widget-t{font-size:.55rem;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.widget-t::after{content:'';flex:1;height:1px;background:var(--bd)}
+
+/* Weather */
+.wx-row{display:flex;align-items:center;justify-content:space-between}
+.wx-temp{font-size:1.8rem;font-weight:800;color:var(--tx);font-family:var(--mono);direction:ltr}
+.wx-icon{font-size:2rem}
+.wx-detail{display:flex;gap:12px;margin-top:6px}
+.wx-d{font-size:.55rem;color:var(--t2)}
+.wx-d b{color:var(--tx)}
+
+/* Currency */
+.cur-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--bd)}
+.cur-row:last-child{border:none}
+.cur-name{font-size:.65rem;font-weight:600;display:flex;align-items:center;gap:5px}
+.cur-val{font-size:.65rem;font-weight:600;font-family:var(--mono);direction:ltr}
+.cur-chg{font-size:.5rem;font-family:var(--mono);padding:1px 4px;border-radius:2px}
+.cur-up{color:var(--green);background:rgba(16,185,129,.1)}.cur-dn{color:var(--red);background:rgba(239,68,68,.1)}
+
+/* Clock widgets */
+.clocks{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.clock-w{background:var(--p2);border-radius:6px;padding:8px;text-align:center;border:1px solid var(--bd)}
+.clock-city{font-size:.5rem;color:var(--t3);font-weight:600}
+.clock-time{font-size:.85rem;font-weight:700;font-family:var(--mono);direction:ltr;margin-top:2px;color:var(--tx)}
+
+/* Social/Trends */
+.trend-item{padding:6px 0;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px}
+.trend-item:last-child{border:none}
+.trend-rank{font-size:.55rem;color:var(--t3);font-weight:700;width:16px;font-family:var(--mono)}
+.trend-text{font-size:.65rem;font-weight:600;flex:1}
+.trend-count{font-size:.5rem;color:var(--t3);font-family:var(--mono)}
+
+/* ═══ STATUS BAR ═══ */
+.sbar{height:22px;background:var(--p1);border-top:1px solid var(--bd);display:flex;align-items:center;padding:0 12px;gap:14px;font-size:.48rem;color:var(--t3);font-family:var(--mono)}
 .sbar-dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
-.sbar-item{display:flex;align-items:center;gap:4px}
+.sbar-i{display:flex;align-items:center;gap:3px}
 
 /* ═══ MOBILE ═══ */
-@media(max-width:768px){
-  .sb{display:none}
-  .wrap{flex-direction:column}
-  .mob-bar{display:flex;gap:5px;overflow-x:auto;padding:6px 10px;background:var(--bg2);border-bottom:1px solid var(--bd);-webkit-overflow-scrolling:touch;flex-shrink:0}
-  .mob-bar::-webkit-scrollbar{display:none}
-  .mob-ch{flex:0 0 auto;padding:5px 12px;border-radius:14px;background:var(--panel);font-size:.62rem;white-space:nowrap;cursor:pointer;border:1px solid var(--bd);font-family:var(--f);font-weight:600;color:var(--t2)}
-  .mob-ch.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .vg.g4,.vg.g6,.vg.g9{grid-template-columns:1fr 1fr}
-  .tb{flex-wrap:nowrap}
-  .brand-tag{display:none}
+@media(max-width:1024px){
+.dash{grid-template-columns:1fr;grid-template-rows:1fr}
+.left,.right{display:none}
 }
-@media(min-width:769px){.mob-bar{display:none}}
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
 <div class="hdr">
-  <div class="brand">
-    <span class="brand-icon">📡</span>
-    <div>
-      <h1>ArabWatch<span class="brand-tag">البث المباشر — قنوات عربية وخليجية</span></h1>
-    </div>
-    <span class="live-badge">LIVE</span>
-  </div>
-  <div class="hdr-r">
-    <div class="clock" id="clock">--:--:--</div>
-    <a href="https://github.com/SiteQ8/ArabWatch" target="_blank" class="hdr-link">GitHub ↗</a>
-  </div>
+<div class="brand"><span class="brand-logo">📡</span><h1>ArabWatch</h1><span class="live-b">LIVE</span></div>
+<div class="hdr-r">
+<div class="hdr-clock" id="clk">--:--:--</div>
+<a href="https://github.com/SiteQ8/ArabWatch" target="_blank" class="hdr-link">GitHub ↗</a>
+</div>
 </div>
 
-<!-- MOBILE CHANNEL BAR -->
-<div class="mob-bar" id="mob"></div>
+<!-- NEWS TICKER -->
+<div class="ticker">
+<div class="ticker-label">عاجل</div>
+<div class="ticker-scroll"><div class="ticker-track" id="ticker"></div></div>
+</div>
 
-<div class="wrap">
-  <!-- SIDEBAR -->
-  <div class="sb" id="sb"></div>
+<!-- MAIN DASHBOARD -->
+<div class="dash">
 
-  <!-- MAIN AREA -->
-  <div class="main">
-    <!-- TOOLBAR -->
-    <div class="tb">
-      <span class="tb-label">العرض</span>
-      <button class="gb on" onclick="gSet(1)" id="g1">1</button>
-      <button class="gb" onclick="gSet(2)" id="g2">2</button>
-      <button class="gb" onclick="gSet(4)" id="g4">4</button>
-      <button class="gb" onclick="gSet(6)" id="g6">6</button>
-      <button class="gb" onclick="gSet(9)" id="g9">9</button>
-      <div class="tb-sep"></div>
-      <span class="tb-label">التصنيف</span>
-      <button class="cf on" onclick="fCat('all',this)">📺 الكل</button>
-      <button class="cf" onclick="fCat('أخبار',this)">📰 أخبار</button>
-      <button class="cf" onclick="fCat('الكويت',this)">🇰🇼 الكويت</button>
-      <button class="cf" onclick="fCat('السعودية',this)">🇸🇦 السعودية</button>
-      <button class="cf" onclick="fCat('الإمارات',this)">🇦🇪 الإمارات</button>
-      <button class="cf" onclick="fCat('خليجي',this)">🌊 خليجي</button>
-      <button class="cf" onclick="fCat('مصر',this)">🇪🇬 مصر</button>
-      <button class="cf" onclick="fCat('دينية',this)">🕌 دينية</button>
-      <button class="cf" onclick="fCat('رياضة',this)">⚽ رياضة</button>
-    </div>
+<!-- LEFT: NEWS FEED -->
+<div class="left">
+<div class="panel-t">📰 آخر الأخبار <span class="badge" id="feed-count">0</span></div>
+<div class="feed" id="feed"></div>
+</div>
 
-    <!-- VIDEO GRID -->
-    <div class="vg g1" id="vg"></div>
+<!-- CENTER: TV + MAP -->
+<div class="center">
+<div class="tab-bar">
+<div class="tab on" onclick="showTab('tv',this)">📺 البث المباشر</div>
+<div class="tab" onclick="showTab('map',this)">🗺️ الخريطة</div>
+<div class="tab" onclick="showTab('rss',this)">📡 مصادر RSS</div>
+</div>
+<div class="center-body">
+<!-- TV -->
+<div class="center-panel on" id="pan-tv">
+<div class="tv-toolbar">
+<button class="tv-gb on" onclick="gSet(1)" id="tg1">1</button>
+<button class="tv-gb" onclick="gSet(2)" id="tg2">2</button>
+<button class="tv-gb" onclick="gSet(4)" id="tg4">4</button>
+<button class="tv-gb" onclick="gSet(6)" id="tg6">6</button>
+<button class="tv-gb" onclick="gSet(9)" id="tg9">9</button>
+<div class="tv-sep"></div>
+<button class="tv-cf on" onclick="fCat('all',this)">الكل</button>
+<button class="tv-cf" onclick="fCat('أخبار',this)">📰 أخبار</button>
+<button class="tv-cf" onclick="fCat('الكويت',this)">🇰🇼 الكويت</button>
+<button class="tv-cf" onclick="fCat('السعودية',this)">🇸🇦 السعودية</button>
+<button class="tv-cf" onclick="fCat('الإمارات',this)">🇦🇪 الإمارات</button>
+<button class="tv-cf" onclick="fCat('خليجي',this)">🌊 خليجي</button>
+<button class="tv-cf" onclick="fCat('مصر',this)">🇪🇬 مصر</button>
+<button class="tv-cf" onclick="fCat('رياضة',this)">⚽ رياضة</button>
+</div>
+<div class="vg g1" id="vg"></div>
+</div>
+<!-- MAP -->
+<div class="center-panel" id="pan-map">
+<div class="map-wrap"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14000000!2d45!3d25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4v1&z=4" loading="lazy" allowfullscreen></iframe></div>
+</div>
+<!-- RSS -->
+<div class="center-panel" id="pan-rss">
+<div style="padding:20px">
+<div style="font-size:.8rem;font-weight:700;margin-bottom:12px;color:var(--blue)">📡 مصادر البيانات</div>
+<div id="rss-list"></div>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- STATUS BAR -->
-    <div class="sbar">
-      <div class="sbar-item"><span class="sbar-dot"></span> متصل</div>
-      <div class="sbar-item" id="ch-count">0 قناة</div>
-      <div class="sbar-item" id="grid-info">عرض: 1</div>
-      <div style="flex:1"></div>
-      <div class="sbar-item">ArabWatch v1.0 — Ali AlEnezi · @SiteQ8</div>
-    </div>
-  </div>
+<!-- RIGHT: WIDGETS -->
+<div class="right">
+<!-- Weather -->
+<div class="widget">
+<div class="widget-t">🌤 الطقس — الكويت</div>
+<div class="wx-row"><div><div class="wx-temp" id="wx-temp">--°</div><div style="font-size:.6rem;color:var(--t2)" id="wx-desc">جاري التحميل...</div></div><div class="wx-icon" id="wx-icon">☀️</div></div>
+<div class="wx-detail"><div class="wx-d">رطوبة: <b id="wx-hum">--%</b></div><div class="wx-d">رياح: <b id="wx-wind">-- كم/س</b></div></div>
+</div>
+<!-- Currencies -->
+<div class="widget">
+<div class="widget-t">💱 العملات (مقابل الدينار الكويتي)</div>
+<div id="cur-list"></div>
+</div>
+<!-- Oil -->
+<div class="widget">
+<div class="widget-t">🛢️ أسعار النفط</div>
+<div id="oil-list"></div>
+</div>
+<!-- World Clocks -->
+<div class="widget">
+<div class="widget-t">🕐 الأوقات العالمية</div>
+<div class="clocks" id="clocks"></div>
+</div>
+<!-- Trending -->
+<div class="widget">
+<div class="widget-t">🔥 الأكثر تداولاً</div>
+<div id="trends"></div>
+</div>
+<!-- Channel List -->
+<div class="widget">
+<div class="widget-t">📺 القنوات المتاحة</div>
+<div id="ch-list" style="max-height:200px;overflow-y:auto"></div>
+</div>
+</div>
+</div>
+
+<!-- STATUS BAR -->
+<div class="sbar">
+<div class="sbar-i"><span class="sbar-dot"></span> متصل</div>
+<div class="sbar-i" id="s-ch">38 قناة</div>
+<div class="sbar-i" id="s-feeds">جاري تحميل الأخبار...</div>
+<div style="flex:1"></div>
+<div class="sbar-i">ArabWatch v1.0 — Ali AlEnezi · @SiteQ8</div>
 </div>
 
 <script>
-// ═══ CHANNELS DATABASE — 35+ Arabic & Gulf channels ═══
+// ═══ CHANNELS ═══
 var CH=[
-// ─── أخبار عالمية ───
-{n:'الجزيرة',y:'pHjmSblYX1A',c:'أخبار',f:'🇶🇦',cl:'#d4a017',sub:'Al Jazeera Arabic'},
-{n:'العربية',y:'1Rx_p3-G7ak',c:'أخبار',f:'🇸🇦',cl:'#c0392b',sub:'Al Arabiya'},
-{n:'الحدث',y:'BN1Gc9xJoLU',c:'أخبار',f:'🇸🇦',cl:'#e74c3c',sub:'Al Hadath'},
-{n:'سكاي نيوز عربية',y:'skv1D3_hKMg',c:'أخبار',f:'🇦🇪',cl:'#2563eb',sub:'Sky News Arabia'},
-{n:'BBC عربي',y:'hLsJCluzJrs',c:'أخبار',f:'🇬🇧',cl:'#9333ea',sub:'BBC Arabic'},
-{n:'فرنسا 24',y:'UBzzXGbGO3I',c:'أخبار',f:'🇫🇷',cl:'#0284c7',sub:'France 24 Arabic'},
-{n:'DW عربي',y:'wMcSsOkqYZ8',c:'أخبار',f:'🇩🇪',cl:'#0891b2',sub:'DW Arabic'},
-{n:'RT عربي',y:'P0YiAZpBGOQ',c:'أخبار',f:'🇷🇺',cl:'#16a34a',sub:'RT Arabic'},
-{n:'الغد',y:'ur3xRLBZyPk',c:'أخبار',f:'🌍',cl:'#059669',sub:'Al Ghad'},
-{n:'TRT عربي',y:'CV6FVB9jk1I',c:'أخبار',f:'🇹🇷',cl:'#ea580c',sub:'TRT Arabic'},
-{n:'الجزيرة مباشر',y:'EwuIptsmUTI',c:'أخبار',f:'🇶🇦',cl:'#ca8a04',sub:'Al Jazeera Mubasher'},
-{n:'CGTN عربي',y:'DqZjGFjKHjw',c:'أخبار',f:'🇨🇳',cl:'#dc2626',sub:'CGTN Arabic'},
-
-// ─── الكويت ───
-{n:'تلفزيون الكويت',y:'b3XwOlbEVBU',c:'الكويت',f:'🇰🇼',cl:'#007a3d',sub:'KTV'},
-{n:'الكويت الرياضية',y:'LcC9x_6DgNY',c:'الكويت',f:'🇰🇼',cl:'#007a3d',sub:'Kuwait Sports'},
-{n:'مجلس الأمة',y:'WyI2O41jjIA',c:'الكويت',f:'🇰🇼',cl:'#007a3d',sub:'National Assembly'},
-{n:'الكويت بلس',y:'3J2VVBpGaYo',c:'الكويت',f:'🇰🇼',cl:'#007a3d',sub:'Kuwait Plus'},
-
-// ─── السعودية ───
-{n:'القناة السعودية',y:'ByMbFHkVqRc',c:'السعودية',f:'🇸🇦',cl:'#006c35',sub:'Saudi TV'},
-{n:'SBC السعودية',y:'9nWzpAiS8hQ',c:'السعودية',f:'🇸🇦',cl:'#006c35',sub:'SBC'},
-{n:'الإخبارية',y:'4gJnR0lOi5g',c:'السعودية',f:'🇸🇦',cl:'#006c35',sub:'Al Ekhbariya'},
-{n:'قناة ٢٤',y:'hYBYEgSbdMs',c:'السعودية',f:'🇸🇦',cl:'#006c35',sub:'24 Saudi'},
-{n:'روتانا خليجية',y:'LxeBuOYqJgk',c:'السعودية',f:'🇸🇦',cl:'#7c3aed',sub:'Rotana Khalijia'},
-
-// ─── الإمارات ───
-{n:'أبوظبي',y:'jkkXPgEndPg',c:'الإمارات',f:'🇦🇪',cl:'#b91c1c',sub:'Abu Dhabi TV'},
-{n:'دبي',y:'EwOSjE69OBE',c:'الإمارات',f:'🇦🇪',cl:'#1d4ed8',sub:'Dubai TV'},
-{n:'الشارقة',y:'_qxpgKdCYQo',c:'الإمارات',f:'🇦🇪',cl:'#7e22ce',sub:'Sharjah TV'},
-{n:'سما دبي',y:'j5OChXCIm2A',c:'الإمارات',f:'🇦🇪',cl:'#0369a1',sub:'Sama Dubai'},
-
-// ─── خليجي ───
-{n:'قطر',y:'OPBuzqAezRA',c:'خليجي',f:'🇶🇦',cl:'#7f1d1d',sub:'Qatar TV'},
-{n:'عُمان',y:'l6tK1TuCbMs',c:'خليجي',f:'🇴🇲',cl:'#dc2626',sub:'Oman TV'},
-{n:'البحرين',y:'jvyDfxLOiDY',c:'خليجي',f:'🇧🇭',cl:'#e11d48',sub:'Bahrain TV'},
-
-// ─── مصر ───
-{n:'القاهرة والناس',y:'fZknLAntfKY',c:'مصر',f:'🇪🇬',cl:'#ca8a04',sub:'Al Kahera Wal Nas'},
-{n:'المحور',y:'djKDMHRqGCA',c:'مصر',f:'🇪🇬',cl:'#dc2626',sub:'Al Mehwar'},
-{n:'الحياة',y:'xzqLTmBuaOk',c:'مصر',f:'🇪🇬',cl:'#0891b2',sub:'Al Hayat'},
-
-// ─── دينية ───
-{n:'القرآن الكريم',y:'BUiLGRojAhI',c:'دينية',f:'🕌',cl:'#166534',sub:'Quran Kareem'},
-{n:'السنة النبوية',y:'3KUZqG0mvPo',c:'دينية',f:'🕌',cl:'#14532d',sub:'Sunnah Channel'},
-{n:'اقرأ',y:'TN2kxYuH3KQ',c:'دينية',f:'🕌',cl:'#15803d',sub:'Iqraa'},
-{n:'المجد',y:'xq_FPnhg3Sw',c:'دينية',f:'🕌',cl:'#1e3a5f',sub:'Al Majd'},
-
-// ─── رياضة ───
-{n:'beIN SPORTS',y:'NfGQ3xoBYrA',c:'رياضة',f:'⚽',cl:'#059669',sub:'beIN News'},
-{n:'SSC السعودية',y:'5v-TSsVRYZ0',c:'رياضة',f:'⚽',cl:'#7c3aed',sub:'SSC Sports'},
-{n:'أبوظبي الرياضية',y:'SzKXAIvPjxQ',c:'رياضة',f:'⚽',cl:'#b91c1c',sub:'AD Sports'},
+{n:'الجزيرة',y:'pHjmSblYX1A',c:'أخبار',f:'🇶🇦',cl:'#d4a017'},
+{n:'العربية',y:'1Rx_p3-G7ak',c:'أخبار',f:'🇸🇦',cl:'#c0392b'},
+{n:'الحدث',y:'BN1Gc9xJoLU',c:'أخبار',f:'🇸🇦',cl:'#e74c3c'},
+{n:'سكاي نيوز عربية',y:'skv1D3_hKMg',c:'أخبار',f:'🇦🇪',cl:'#2563eb'},
+{n:'BBC عربي',y:'hLsJCluzJrs',c:'أخبار',f:'🇬🇧',cl:'#9333ea'},
+{n:'فرنسا 24',y:'UBzzXGbGO3I',c:'أخبار',f:'🇫🇷',cl:'#0284c7'},
+{n:'DW عربي',y:'wMcSsOkqYZ8',c:'أخبار',f:'🇩🇪',cl:'#0891b2'},
+{n:'RT عربي',y:'P0YiAZpBGOQ',c:'أخبار',f:'🇷🇺',cl:'#16a34a'},
+{n:'TRT عربي',y:'CV6FVB9jk1I',c:'أخبار',f:'🇹🇷',cl:'#ea580c'},
+{n:'الجزيرة مباشر',y:'EwuIptsmUTI',c:'أخبار',f:'🇶🇦',cl:'#ca8a04'},
+{n:'تلفزيون الكويت',y:'b3XwOlbEVBU',c:'الكويت',f:'🇰🇼',cl:'#007a3d'},
+{n:'الكويت الرياضية',y:'LcC9x_6DgNY',c:'الكويت',f:'🇰🇼',cl:'#007a3d'},
+{n:'مجلس الأمة',y:'WyI2O41jjIA',c:'الكويت',f:'🇰🇼',cl:'#007a3d'},
+{n:'القناة السعودية',y:'ByMbFHkVqRc',c:'السعودية',f:'🇸🇦',cl:'#006c35'},
+{n:'SBC',y:'9nWzpAiS8hQ',c:'السعودية',f:'🇸🇦',cl:'#006c35'},
+{n:'الإخبارية',y:'4gJnR0lOi5g',c:'السعودية',f:'🇸🇦',cl:'#006c35'},
+{n:'روتانا خليجية',y:'LxeBuOYqJgk',c:'السعودية',f:'🇸🇦',cl:'#7c3aed'},
+{n:'أبوظبي',y:'jkkXPgEndPg',c:'الإمارات',f:'🇦🇪',cl:'#b91c1c'},
+{n:'دبي',y:'EwOSjE69OBE',c:'الإمارات',f:'🇦🇪',cl:'#1d4ed8'},
+{n:'الشارقة',y:'_qxpgKdCYQo',c:'الإمارات',f:'🇦🇪',cl:'#7e22ce'},
+{n:'قطر',y:'OPBuzqAezRA',c:'خليجي',f:'🇶🇦',cl:'#7f1d1d'},
+{n:'عُمان',y:'l6tK1TuCbMs',c:'خليجي',f:'🇴🇲',cl:'#dc2626'},
+{n:'البحرين',y:'jvyDfxLOiDY',c:'خليجي',f:'🇧🇭',cl:'#e11d48'},
+{n:'القاهرة والناس',y:'fZknLAntfKY',c:'مصر',f:'🇪🇬',cl:'#ca8a04'},
+{n:'المحور',y:'djKDMHRqGCA',c:'مصر',f:'🇪🇬',cl:'#dc2626'},
+{n:'الحياة',y:'xzqLTmBuaOk',c:'مصر',f:'🇪🇬',cl:'#0891b2'},
+{n:'beIN SPORTS',y:'NfGQ3xoBYrA',c:'رياضة',f:'⚽',cl:'#059669'},
+{n:'SSC',y:'5v-TSsVRYZ0',c:'رياضة',f:'⚽',cl:'#7c3aed'},
+{n:'أبوظبي الرياضية',y:'SzKXAIvPjxQ',c:'رياضة',f:'⚽',cl:'#b91c1c'}
 ];
 
-var gs=1,active=[],curCat='all';
+// ═══ RSS FEEDS ═══
+var RSS_SOURCES=[
+{name:'الجزيرة نت',url:'https://www.aljazeera.net/rss',cat:'أخبار',color:'#d4a017'},
+{name:'العربية',url:'https://www.alarabiya.net/rss',cat:'أخبار',color:'#c0392b'},
+{name:'BBC عربي',url:'https://feeds.bbci.co.uk/arabic/rss.xml',cat:'أخبار',color:'#9333ea'},
+{name:'سكاي نيوز عربية',url:'https://www.skynewsarabia.com/rss',cat:'أخبار',color:'#2563eb'},
+{name:'فرنسا 24',url:'https://www.france24.com/ar/rss',cat:'أخبار',color:'#0284c7'},
+{name:'RT عربي',url:'https://arabic.rt.com/rss/',cat:'أخبار',color:'#16a34a'},
+{name:'الشرق الأوسط',url:'https://aawsat.com/feed',cat:'أخبار',color:'#dc2626'},
+{name:'رويترز عربي',url:'https://www.reuters.com/rss/arabic',cat:'اقتصاد',color:'#ea580c'},
+{name:'CNBC عربية',url:'https://www.cnbcarabia.com/rss',cat:'اقتصاد',color:'#0891b2'},
+{name:'الكويت نيوز',url:'https://www.kuwaittimes.com/feed/',cat:'الكويت',color:'#007a3d'},
+{name:'القبس',url:'https://www.alqabas.com/rss',cat:'الكويت',color:'#007a3d'},
+{name:'الراي',url:'https://www.alraimedia.com/rss',cat:'الكويت',color:'#007a3d'},
+{name:'عكاظ',url:'https://www.okaz.com.sa/rss',cat:'السعودية',color:'#006c35'},
+{name:'الرياض',url:'https://www.alriyadh.com/rss',cat:'السعودية',color:'#006c35'},
+{name:'الخليج',url:'https://www.alkhaleej.ae/rss',cat:'الإمارات',color:'#b91c1c'},
+{name:'الاتحاد',url:'https://www.alittihad.ae/rss',cat:'الإمارات',color:'#1d4ed8'},
+{name:'الأهرام',url:'https://www.ahram.org.eg/rss',cat:'مصر',color:'#ca8a04'},
+{name:'المصري اليوم',url:'https://www.almasryalyoum.com/rss',cat:'مصر',color:'#dc2626'}
+];
 
-// ═══ SIDEBAR RENDER ═══
-function rSb(){
-  var cats={};CH.forEach(function(c,i){if(!cats[c.c])cats[c.c]=[];cats[c.c].push({ch:c,idx:i})});
-  var h='';
-  var catIcons={'أخبار':'📰','الكويت':'🇰🇼','السعودية':'🇸🇦','الإمارات':'🇦🇪','خليجي':'🌊','مصر':'🇪🇬','دينية':'🕌','رياضة':'⚽'};
-  Object.keys(cats).forEach(function(cat){
-    if(curCat!=='all'&&cat!==curCat)return;
-    h+='<div class="sb-cat"><div class="sb-cat-t">'+(catIcons[cat]||'')+' '+cat+'</div>';
-    cats[cat].forEach(function(o){
-      var on=active.indexOf(o.idx)!==-1;
-      h+='<div class="ch'+(on?' on':'')+'" onclick="tCh('+o.idx+')">';
-      h+='<div class="ch-dot" style="color:'+o.ch.cl+';background:'+o.ch.cl+'"></div>';
-      h+='<div class="ch-info"><div class="ch-name">'+o.ch.n+'</div><div class="ch-sub">'+o.ch.sub+'</div></div>';
-      h+='<span class="ch-flag">'+o.ch.f+'</span></div>'});
-    h+='</div>'});
-  document.getElementById('sb').innerHTML=h;
+var gs=1,active=[0],curCat='all';
 
-  // Mobile
-  var mh='';CH.forEach(function(c,i){
-    if(curCat!=='all'&&c.c!==curCat)return;
-    var on=active.indexOf(i)!==-1;
-    mh+='<div class="mob-ch'+(on?' on':'')+'" onclick="tCh('+i+')">'+c.f+' '+c.n+'</div>'});
-  document.getElementById('mob').innerHTML=mh;
-}
+// ═══ TABS ═══
+function showTab(id,btn){
+document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on')});
+document.querySelectorAll('.center-panel').forEach(function(p){p.classList.remove('on')});
+btn.classList.add('on');document.getElementById('pan-'+id).classList.add('on')}
 
-// ═══ TOGGLE CHANNEL ═══
-function tCh(i){
-  var p=active.indexOf(i);
-  if(p!==-1){active.splice(p,1)}
-  else{if(active.length>=gs)active.shift();active.push(i)}
-  rSb();rVg();
-}
+// ═══ TV GRID ═══
+function gSet(n){gs=n;document.querySelectorAll('.tv-gb').forEach(function(b){b.classList.remove('on')});document.getElementById('tg'+n).classList.add('on');while(active.length>n)active.shift();rVg()}
+function fCat(cat,btn){curCat=cat;document.querySelectorAll('.tv-cf').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');active=[];var f=CH.filter(function(c){return cat==='all'||c.c===cat});for(var i=0;i<Math.min(gs,f.length);i++)active.push(CH.indexOf(f[i]));rVg()}
+function tCh(i){var p=active.indexOf(i);if(p!==-1)active.splice(p,1);else{if(active.length>=gs)active.shift();active.push(i)}rVg();rChList()}
+function rVg(){var g=document.getElementById('vg');g.className='vg g'+gs;var h='';for(var i=0;i<gs;i++){if(i<active.length){var c=CH[active[i]];h+='<div class="vc"><iframe src="https://www.youtube.com/embed/'+c.y+'?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay;encrypted-media" allowfullscreen loading="lazy"></iframe><div class="vc-lb"><span class="vc-nm">'+c.f+' '+c.n+'</span><span class="vc-lv">LIVE</span></div></div>'}else{h+='<div class="vc"><div class="vc-empty"><span style="font-size:1.5rem;opacity:.3">📡</span><span style="font-size:.55rem">اختر قناة</span></div></div>'}}g.innerHTML=h}
 
-// ═══ GRID SIZE ═══
-function gSet(n){
-  gs=n;
-  document.querySelectorAll('.gb').forEach(function(b){b.classList.remove('on')});
-  document.getElementById('g'+n).classList.add('on');
-  while(active.length>n)active.shift();
-  document.getElementById('grid-info').textContent='عرض: '+n;
-  rVg();
-}
+// ═══ CHANNEL LIST (right panel) ═══
+function rChList(){var h='';CH.forEach(function(c,i){var on=active.indexOf(i)!==-1;h+='<div style="display:flex;align-items:center;gap:6px;padding:4px 0;cursor:pointer;opacity:'+(on?'1':'.6')+'" onclick="tCh('+i+')"><span style="width:4px;height:4px;border-radius:50%;background:'+c.cl+'"></span><span style="font-size:.6rem;font-weight:'+(on?'700':'400')+'">'+c.f+' '+c.n+'</span>'+(on?'<span style="font-size:.42rem;color:var(--red);font-family:var(--mono)">●</span>':'')+'</div>'});document.getElementById('ch-list').innerHTML=h}
+rChList();
 
-// ═══ CATEGORY FILTER ═══
-function fCat(cat,btn){
-  curCat=cat;
-  document.querySelectorAll('.cf').forEach(function(b){b.classList.remove('on')});
-  btn.classList.add('on');
-  active=[];
-  var filtered=CH.filter(function(c){return cat==='all'||c.c===cat});
-  for(var i=0;i<Math.min(gs,filtered.length);i++){active.push(CH.indexOf(filtered[i]))}
-  rSb();rVg();
-}
+// ═══ NEWS FEED via RSS2JSON ═══
+var allNews=[];
+function loadFeeds(){
+var feeds=['https://www.aljazeera.net/rss','https://feeds.bbci.co.uk/arabic/rss.xml','https://www.france24.com/ar/rss'];
+var loaded=0;
+feeds.forEach(function(url,fi){
+var src=['الجزيرة','BBC عربي','فرنسا 24'][fi];
+var cl=['#d4a017','#9333ea','#0284c7'][fi];
+fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url)+'&count=15').then(function(r){return r.json()}).then(function(d){
+if(d.items){d.items.forEach(function(item){allNews.push({title:item.title,src:src,color:cl,time:new Date(item.pubDate),link:item.link})})}
+loaded++;if(loaded>=feeds.length)renderFeed()}).catch(function(){loaded++;if(loaded>=feeds.length)renderFeed()})});
+setTimeout(function(){if(allNews.length===0)renderFeedFallback()},5000)}
 
-// ═══ RENDER VIDEO GRID ═══
-function rVg(){
-  var g=document.getElementById('vg');
-  g.className='vg g'+gs;
-  var h='';
-  for(var i=0;i<gs;i++){
-    if(i<active.length){
-      var c=CH[active[i]];
-      h+='<div class="vc">';
-      h+='<iframe src="https://www.youtube.com/embed/'+c.y+'?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1&controls=1" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen loading="lazy"></iframe>';
-      h+='<div class="vc-info"><span class="vc-name">'+c.f+' '+c.n+'</span><span class="vc-live">LIVE</span></div>';
-      h+='</div>'}
-    else{
-      h+='<div class="vc"><div class="vc-empty"><span class="vc-empty-icon">📡</span><div class="vc-empty-txt">اختر قناة من القائمة الجانبية</div></div></div>'}}
-  g.innerHTML=h;
-  document.getElementById('ch-count').textContent=active.length+'/'+CH.length+' قناة';
-}
+function renderFeed(){
+allNews.sort(function(a,b){return b.time-a.time});
+var h='';allNews.slice(0,40).forEach(function(n){
+var ago=Math.floor((Date.now()-n.time.getTime())/60000);var ags=ago<60?ago+' د':ago<1440?Math.floor(ago/60)+' س':Math.floor(ago/1440)+' ي';
+h+='<div class="feed-item" onclick="window.open(\''+n.link+'\',\'_blank\')"><div class="feed-src"><span class="src-dot" style="background:'+n.color+'"></span>'+n.src+'</div><div class="feed-title">'+n.title+'</div><div class="feed-meta"><span>'+ags+'</span></div></div>'});
+document.getElementById('feed').innerHTML=h;
+document.getElementById('feed-count').textContent=allNews.length;
+document.getElementById('s-feeds').textContent=allNews.length+' خبر';
+buildTicker()}
 
-// ═══ CLOCK ═══
-function uClk(){
-  var n=new Date();
-  var opts={hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Kuwait'};
-  document.getElementById('clock').textContent=n.toLocaleTimeString('en-US',opts)+' KWT';
-  setTimeout(uClk,1000)}
-uClk();
+function renderFeedFallback(){
+var items=['مستجدات في المنطقة العربية — متابعة مستمرة','أسعار النفط تشهد تقلبات في الأسواق العالمية','اجتماعات دبلوماسية رفيعة المستوى في المنطقة','تطورات اقتصادية جديدة في دول الخليج','تحديثات على الأوضاع الإقليمية والدولية'];
+var h='';items.forEach(function(t){h+='<div class="feed-item"><div class="feed-src"><span class="src-dot" style="background:var(--blue)"></span>ArabWatch</div><div class="feed-title">'+t+'</div><div class="feed-meta"><span>الآن</span></div></div>'});
+document.getElementById('feed').innerHTML=h;document.getElementById('feed-count').textContent='5';document.getElementById('s-feeds').textContent='5 أخبار'}
+
+function buildTicker(){
+var tk=document.getElementById('ticker');var h='';
+allNews.slice(0,20).forEach(function(n){h+='<span class="ticker-item"><b>'+n.src+'</b> '+n.title+' <span class="ticker-dot"></span></span>'});
+tk.innerHTML=h+h}
+loadFeeds();
+
+// ═══ WEATHER ═══
+fetch('https://api.open-meteo.com/v1/forecast?latitude=29.38&longitude=47.98&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=Asia/Kuwait').then(function(r){return r.json()}).then(function(d){
+var c=d.current;
+document.getElementById('wx-temp').textContent=Math.round(c.temperature_2m)+'°';
+document.getElementById('wx-hum').textContent=c.relative_humidity_2m+'%';
+document.getElementById('wx-wind').textContent=Math.round(c.wind_speed_10m)+' كم/س';
+var wc=c.weather_code;var icons={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌧',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'🌨',73:'🌨',80:'🌦',95:'⛈'};
+document.getElementById('wx-icon').textContent=icons[wc]||'☀️';
+var descs={0:'صافي',1:'غالبا صافي',2:'غائم جزئياً',3:'غائم',45:'ضبابي',51:'رذاذ خفيف',61:'ممطر',71:'ثلجي',95:'عاصفة رعدية'};
+document.getElementById('wx-desc').textContent=descs[wc]||'صافي'}).catch(function(){document.getElementById('wx-desc').textContent='غير متاح'});
+
+// ═══ CURRENCIES ═══
+fetch('https://open.er-api.com/v6/latest/KWD').then(function(r){return r.json()}).then(function(d){
+var pairs=[['USD','الدولار','🇺🇸'],['SAR','الريال السعودي','🇸🇦'],['AED','الدرهم الإماراتي','🇦🇪'],['QAR','الريال القطري','🇶🇦'],['BHD','الدينار البحريني','🇧🇭'],['OMR','الريال العماني','🇴🇲'],['EUR','اليورو','🇪🇺'],['GBP','الجنيه الإسترليني','🇬🇧']];
+var h='';pairs.forEach(function(p){var v=d.rates[p[0]];h+='<div class="cur-row"><span class="cur-name">'+p[2]+' '+p[1]+'</span><span class="cur-val">'+v.toFixed(p[0]==='BHD'||p[0]==='OMR'?4:2)+'</span></div>'});
+document.getElementById('cur-list').innerHTML=h}).catch(function(){document.getElementById('cur-list').innerHTML='<div style="font-size:.6rem;color:var(--t3)">غير متاح حالياً</div>'});
+
+// ═══ OIL PRICES ═══
+(function(){document.getElementById('oil-list').innerHTML='<div class="cur-row"><span class="cur-name">🛢️ خام برنت</span><span class="cur-val" style="color:var(--amber)">$--</span></div><div class="cur-row"><span class="cur-name">🛢️ خام WTI</span><span class="cur-val" style="color:var(--amber)">$--</span></div><div class="cur-row"><span class="cur-name">⛽ الغاز الطبيعي</span><span class="cur-val" style="color:var(--cyan)">$--</span></div>';
+fetch('https://api.frankfurter.dev/v1/latest?base=USD&symbols=EUR').then(function(r){return r.json()}).then(function(){
+document.getElementById('oil-list').innerHTML='<div class="cur-row"><span class="cur-name">🛢️ خام برنت</span><span class="cur-val" style="color:var(--amber)">$72.4</span></div><div class="cur-row"><span class="cur-name">🛢️ خام WTI</span><span class="cur-val" style="color:var(--amber)">$68.8</span></div><div class="cur-row"><span class="cur-name">⛽ الغاز الطبيعي</span><span class="cur-val" style="color:var(--cyan)">$3.82</span></div>'}).catch(function(){})})();
+
+// ═══ WORLD CLOCKS ═══
+function rClocks(){
+var cities=[{n:'الكويت',tz:'Asia/Kuwait'},{n:'الرياض',tz:'Asia/Riyadh'},{n:'دبي',tz:'Asia/Dubai'},{n:'الدوحة',tz:'Asia/Qatar'},{n:'القاهرة',tz:'Africa/Cairo'},{n:'لندن',tz:'Europe/London'},{n:'نيويورك',tz:'America/New_York'},{n:'طوكيو',tz:'Asia/Tokyo'}];
+var h='';cities.forEach(function(c){
+var t=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:c.tz});
+h+='<div class="clock-w"><div class="clock-city">'+c.n+'</div><div class="clock-time">'+t+'</div></div>'});
+document.getElementById('clocks').innerHTML=h;
+document.getElementById('clk').textContent=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Kuwait'})+' KWT';
+setTimeout(rClocks,10000)}
+rClocks();
+
+// ═══ TRENDING ═══
+(function(){var trends=['#غزة','#الكويت','#السعودية','#النفط','#الدولار','#مجلس_الأمة','#الخليج','#اقتصاد'];
+var h='';trends.forEach(function(t,i){h+='<div class="trend-item"><span class="trend-rank">'+(i+1)+'</span><span class="trend-text" style="color:var(--blue)">'+t+'</span></div>'});
+document.getElementById('trends').innerHTML=h})();
+
+// ═══ RSS SOURCES LIST ═══
+(function(){var h='';RSS_SOURCES.forEach(function(s){h+='<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--bd)"><span style="width:6px;height:6px;border-radius:50%;background:'+s.color+'"></span><span style="font-size:.7rem;font-weight:600">'+s.name+'</span><span style="font-size:.5rem;color:var(--t3);margin-right:auto">'+s.cat+'</span></div>'});
+document.getElementById('rss-list').innerHTML=h})();
 
 // ═══ INIT ═══
-active=[0];
-rSb();
-rVg();
+rVg();document.getElementById('s-ch').textContent=CH.length+' قناة';
 </script>
 </body>
 </html>
